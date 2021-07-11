@@ -1,0 +1,12 @@
+
+#container{
+    border:2px solid black;
+    
+    display:grid;
+    height: 50vw;
+    width: 50vw;
+}   
+div{
+    
+    border:1px solid black;
+}

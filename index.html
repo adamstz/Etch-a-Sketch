@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Etch-A-Sketch</title>
+  <link href="css/normalize.css" rel="stylesheet" />
+  <link href="css/main.css" rel="stylesheet" />
+</head>
+<body>
+<div id = "container">
+
+</div>
+  
+  <script>
+  const container = document.querySelector("#container");
+	function createGrid(rows){
+    container.setAttribute("style", `grid-template-rows : repeat(${rows},auto)`);
+    container.setAttribute("style", `grid-template-columns : repeat(${rows},auto)`);
+    
+    for(let i = 0;i < rows * rows;i++){
+      let block = document.createElement("div");
+      container.appendChild(block);
+    }
+  }
+  createGrid(4);
+  </script>
+</body>
+</html>
+
