@@ -20,7 +20,7 @@
   const container = document.querySelector("#container");
   const reset_button = document.querySelector('#reset');
   const size_button = document.querySelector('#size');
-  let number_of_rows = prompt("How many rows/columns:","");
+  let number_of_rows = userPrompt();
   createGrid(number_of_rows);
   const div = container.childNodes;
   size_button.onclick = changeSize;
@@ -37,9 +37,20 @@
     container.setAttribute("style", `grid-template-rows : repeat(${rows},auto)`);
     container.setAttribute("style", `grid-template-columns : repeat(${rows},auto)`);
   }
+  function userPrompt(){
+    while(true){
+      let number_of_rows = prompt("How many rows/columns (100 and under):","");
+      
+      if(number_of_rows <= 100 && number_of_rows % 1 == 0 ){
+        return number_of_rows;
+      }
+      
+    }
+    
+  }
   function changeSize(){
 
-     let number_of_rows =  prompt("How many rows/columns:");
+     let number_of_rows =  userPrompt();
     
     for(i = div.length - 1;i>=0;i--){
       div[i].remove();
