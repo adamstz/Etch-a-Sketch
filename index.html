@@ -6,23 +6,67 @@
   <link href="css/normalize.css" rel="stylesheet" />
   <link href="css/main.css" rel="stylesheet" />
 </head>
+<header>
+  <h1>Etch-a-Sketch</h1>
+</header>
 <body>
-<div id = "container">
-
+<div id ="buttons-container">
+<button id="reset" >Reset</button>
+<button id ="size">Change Size</button>
 </div>
+<div id = "container"></div>
   
   <script>
   const container = document.querySelector("#container");
+  const reset_button = document.querySelector('#reset');
+  const size_button = document.querySelector('#size');
+  let number_of_rows = prompt("How many rows/columns:","");
+  createGrid(number_of_rows);
+  const div = container.childNodes;
+  size_button.onclick = changeSize;
+  reset_button.onclick = reset;
+  addColorMouseOver();
+  
 	function createGrid(rows){
-    container.setAttribute("style", `grid-template-rows : repeat(${rows},auto)`);
-    container.setAttribute("style", `grid-template-columns : repeat(${rows},auto)`);
-    
+  
     for(let i = 0;i < rows * rows;i++){
       let block = document.createElement("div");
+
       container.appendChild(block);
     }
+    container.setAttribute("style", `grid-template-rows : repeat(${rows},auto)`);
+    container.setAttribute("style", `grid-template-columns : repeat(${rows},auto)`);
   }
-  createGrid(4);
+  function changeSize(){
+
+     let number_of_rows =  prompt("How many rows/columns:");
+    
+    for(i = div.length - 1;i>=0;i--){
+      div[i].remove();
+    }
+
+     createGrid(number_of_rows);
+     addColorMouseOver();
+     
+  }
+  function addColorMouseOver(){
+    
+    div.forEach((square) =>{
+      square.addEventListener('mouseover',() => {
+      square.style.backgroundColor = "black";
+      
+      });
+    
+    });
+  
+  }
+  function reset(){
+    
+    div.forEach((square) =>{
+      square.style.backgroundColor = "";
+      });
+  }
+  
   </script>
 </body>
 </html>
